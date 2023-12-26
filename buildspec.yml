@@ -1,15 +1,32 @@
-pre_build:
-  commands:
-    - echo "Installing dependencies into the node_modules/ directory"
-    - npm install
+version: 0.3
 
-build:
-  commands:
-    - echo "Build started on $(date)"
-    - echo "Compiling"
-    - npm run build
-pre_build:
-  commands:
-    - npm cache clean --force
-    - echo "Installing dependencies into the node_modules/ directory"
-    - npm install
+phases:
+  pre_build:
+    commands:
+      - npm cache clean --force
+      - echo "Installing dependencies into the node_modules/ directory"
+      - npm install
+
+  build:
+    commands:
+      - echo "Build started on $(date)"
+      - echo "Compiling"
+      - npm run build
+
+artifacts:
+  files:
+    - public/**/*
+    - src/**/*
+    - package.json
+    - appspec.yml
+    - scripts/**/*
+    - dist/**/*
+
+# Specify additional settings if needed
+# For example, environment variables, runtime settings, etc.
+# environment:
+#   variables:
+#     KEY: "value"
+# runtime:
+#   nodejs:
+#     version: 14
