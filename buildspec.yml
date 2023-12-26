@@ -1,36 +1,18 @@
-version: 0.3  # Updated version number
+pre_build:
+  commands:
+    - echo "Installing dependencies into the node_modules/ directory"
+    - cd /codebuild/output/src69628301/src/
+    - npm install
 
-phases:
-  pre_build:
-    commands:
-      - echo "Installing dependencies into the node_modules/ directory"
-      - npm install
-
-  build:
-    commands:
-      - echo "Build started on $(date)"
-      - echo "Compiling"
-      - npm run build
-
-  post_build:
-    commands:
-      - echo "Build completed on $(date)"
-
-artifacts:
-  files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
-    # Add any additional files or directories you want to include in the artifacts
-    - dist/**/*  # For example, if your build process generates a 'dist' directory
-
-# Specify additional settings if needed
-# For example, environment variables, runtime settings, etc.
-# environment:
-#   variables:
-#     KEY: "value"
-# runtime:
-#   nodejs:
-#     version: 14
+build:
+  commands:
+    - echo "Build started on $(date)"
+    - echo "Compiling"
+    - cd /codebuild/output/src69628301/src/
+    - npm run build
+pre_build:
+  commands:
+    - npm cache clean --force
+    - echo "Installing dependencies into the node_modules/ directory"
+    - cd /codebuild/output/src69628301/src/
+    - npm install
