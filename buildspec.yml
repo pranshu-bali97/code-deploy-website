@@ -1,18 +1,15 @@
 pre_build:
   commands:
     - echo "Installing dependencies into the node_modules/ directory"
-    - cd /codebuild/output/src69628301/src/
     - npm install
 
 build:
   commands:
     - echo "Build started on $(date)"
     - echo "Compiling"
-    - cd /codebuild/output/src69628301/src/
     - npm run build
 pre_build:
   commands:
     - npm cache clean --force
     - echo "Installing dependencies into the node_modules/ directory"
-    - cd /codebuild/output/src69628301/src/
     - npm install
