@@ -2,10 +2,11 @@ version: 0.3
 
 phases:
   pre_build:
-    commands:
-      - npm cache clean --force
-      - echo "Installing dependencies into the node_modules/ directory"
-      - npm install
+  commands:
+    - cd /codebuild/output/src1008918221/src/
+    - npm cache clean --force
+    - echo "Installing dependencies into the node_modules/ directory"
+    - npm install
 
   build:
     commands:
