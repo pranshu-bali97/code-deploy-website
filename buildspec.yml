@@ -1,18 +1,21 @@
-version: 0.2
+version: 0.3  # Updated version number
+
 phases:
   pre_build:
     commands:
-      #installs dependencies into the node_modules/ directory
+      - echo "Installing dependencies into the node_modules/ directory"
       - npm install
+
   build:
     commands:
-      - echo Build started on `date`
-      - echo Compiling
+      - echo "Build started on $(date)"
+      - echo "Compiling"
       - npm run build
+
   post_build:
     commands:
-      - echo Build completed on `date`
-# Include only the files required for your application to run.
+      - echo "Build completed on $(date)"
+
 artifacts:
   files:
     - public/**/*
@@ -20,3 +23,14 @@ artifacts:
     - package.json
     - appspec.yml
     - scripts/**/*
+    # Add any additional files or directories you want to include in the artifacts
+    - dist/**/*  # For example, if your build process generates a 'dist' directory
+
+# Specify additional settings if needed
+# For example, environment variables, runtime settings, etc.
+# environment:
+#   variables:
+#     KEY: "value"
+# runtime:
+#   nodejs:
+#     version: 14
